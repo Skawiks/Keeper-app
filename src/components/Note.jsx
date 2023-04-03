@@ -1,11 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 
-function Note(){
+function Note(props){
+
+    
+
     return(
         <div className="note">
-            <h1>The Title</h1>
-            <p>The Content</p>
+            <h1>{props.title}</h1>
+            <p>{props.content}</p>
+            <button onClick={()=>{
+                props.toDelete(props.id);
+            }}>Delete</button>
         </div>
     );
 }
