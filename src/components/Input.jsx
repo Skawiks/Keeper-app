@@ -12,15 +12,21 @@ function Input(props){
        setNote(name==="title"?{title:value, content:note.content}:{title:note.title, content:value})
        }
 
+    function submitNote(event){
+        props.onAdd(note);
+        setNote({
+            title: "",
+            content: ""
+        })
+    }
+
  return(
   <div>
-    <form>
+    <form className="create-note">
         <input onChange={changeHandle} name="title" placeholder="Title" value={note.title}></input>
         <textarea onChange={changeHandle} name="content" placeholder="Take a note..." value={note.content}></textarea>
         <button type="button" 
-           onClick={()=>{
-           props.onAdd(note);
-        }}>Add</button>
+           onClick={submitNote}>Add</button>
     </form>
 </div>);
 }
